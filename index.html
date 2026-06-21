@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Father's Day, Papa!</title>
+    <style>
+        /* Slow gradient background animation */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .main-pic {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Pop-up Overlay */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+        }
+
+        .popup button {
+            padding: 10px 25px;
+            margin: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-yes { background-color: #2ecc71; color: white; }
+        .btn-no { background-color: #e74c3c; color: white; }
+        .popup button:hover { transform: scale(1.05); }
+
+        /* Content hidden until "Yes" is clicked */
+        #main-content {
+            display: none;
+        }
+
+        /* Album Grid */
+        .album {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .album img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .album img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Letter Section */
+        .letter-btn {
+            font-size: 3rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+            outline: none;
+        }
+
+        .letter-btn:hover {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .letter-content {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #fffdf6;
+            border-left: 5px solid #f1c40f;
+            border-radius: 5px;
+            text-align: left;
+            line-height: 1.6;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="popup-overlay" class="overlay">
+        <div class="popup">
+            <h2>Ready for this?</h2>
+            <button class="btn-yes" onclick="startSite()">Yes!</button>
+            <button class="btn-no" onclick="alert('Come on, Dad! Click Yes! ❤️')">No</button>
+        </div>
+    </div>
+
+    <div id="main-content" class="container">
+        <h1>Happy Father's Day to the Fab Dad! ❤️</h1>
+        
+        <img src="dad.jpg" alt="The Fab Dad" class="main-pic">
+
+        <div class="album">
+            <img src="photo1.jpg" alt="Memory 1">
+            <img src="photo2.jpg" alt="Memory 2">
+            <img src="photo3.jpg" alt="Memory 3">
+            <img src="photo4.jpg" alt="Memory 4">
+            <img src="photo5.jpg" alt="Memory 5">
+            <img src="photo6.jpg" alt="Memory 6">
+        </div>
+
+        <button class="letter-btn" onclick="toggleLetter()">✉️</button>
+        
+        <div id="letter" class="letter-content">
+            <h3>Dear Dad,</h3>
+<p>
+    Happy Father's Day to the most amazing man I know. Looking back at these photos 
+    reminds me of how lucky I am to have you as my papa. Thank you for every sacrifice you've made, every piece of advice you've given me, and for always being my biggest supporter. No matter how many times u lecture me, I might not seem like I am interested, but on a lot of occasions I have felt the weight of those words. During times when I needed guidance or when I just wanted to feel free, you have always given me what I wanted in ways that I wouldn't expect. Thank you for all these years of support and knowledge, I will make sure to build our lineage stronger and better, all inspired from you. 
+</p>
+<p>
+    No matter how old I get, I will always look up to you. Thank you for teaching me 
+    what it means to be a kind, hardworking, and good person. 
+</p>
+<p>I love you more than words can say.<br>With all my love,<br>Omi</p>
+        </div>
+    </div>
+
+    <script>
+        function startSite() {
+            // Hide the pop-up
+            document.getElementById('popup-overlay').style.display = 'none';
+            // Show the main content
+            document.getElementById('main-content').style.display = 'block';
+            // Start the music (Modern browsers require user interaction first, which is why the pop-up is perfect)
+            var music = document.getElementById('bg-music');
+            music.play().catch(function(error) {
+                console.log("Audio playback failed because of browser restrictions:", error);
+            });
+        }
+
+        function toggleLetter() {
+            var letter = document.getElementById('letter');
+            if (letter.style.display === 'block') {
+                letter.style.display = 'none';
+            } else {
+                letter.style.display = 'block';
+                // Scroll down smoothly to show the letter
+                letter.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
